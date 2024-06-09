@@ -16,4 +16,4 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-export const primsa = db;
+export const prisma = db;
