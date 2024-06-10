@@ -18,11 +18,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(inter.className)}>
-      <body className="min-h-screen pt-12 bg-slate-50 antialiased">
+    <html lang="en" className={cn("bg-white text-slate-900 antialiased light" , inter.className)}>
+      <body className="min-h-screen bg-slate-50 antialiased">
         <Providers>
           <Navbar/>
-          <div className="container max-w-7xl mx-auto h-full pt-12">
+          <div className="container max-w-7xl mx-auto h-full pt-24">
             {children}
           </div>
         </Providers>
