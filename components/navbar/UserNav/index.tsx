@@ -1,23 +1,9 @@
 "use client";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-
 import { User } from "next-auth"
 import UserAvatar from "../../ui/UserAvatar"
-import { User as UserIcon } from "lucide-react";
-import userNavData, { UserNavInterface } from "./UserNavData";
+import { CreditCard, LogOut, Mail, MessageSquare, Settings, User as UserIcon, UserPlus, Users } from "lucide-react";
+import { DropDownMenu, callLabel, dropButton, item, separator, subMenu } from "@/components/ui/DropDownComponent";
 
 
 interface UserNavProps {
@@ -26,68 +12,42 @@ interface UserNavProps {
 
 export default function UserNav({ user }: UserNavProps) {
 
-  const UserNavData : UserNavInterface[] = userNavData(user.name || "My Account", user.email || "user@mail.com");
+  const iconClassName = "mr-2 h-4 w-4";
+
+  const UserNavData = [
+    callLabel(user.name || "My Account"),
+    separator(),
+    item("Profile", <UserIcon className={iconClassName} />, "⇧⌘P"),
+    item("Billing", <CreditCard className={iconClassName} />, "⌘B"),
+    item("Settings", <Settings className={iconClassName} />, "⌘S"),
+
+    separator(),
+    item("Teams", <Users className={iconClassName} />),
+    subMenu("Invite Users", <UserPlus className={iconClassName} />, [
+      {
+        title: user.email || "example@email.com",
+        icon: <Mail className={iconClassName} />,
+      },
+      {
+        title: "Message",
+        icon: <MessageSquare className={iconClassName} />
+      }
+    ]),
+
+    separator(),
+    dropButton("Log out", <LogOut className={iconClassName} />, "⇧⌘Q", () => {
+      console.log("hello world")
+    }),
+  ]
+
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger>
-        <UserAvatar className="h-10 w-10"
-          user={{
-            name: user.name || null,
-            image: user.image || null
-          }} />
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent className="w-56">
-
-        {UserNavData.map(item => {
-
-          if (item?.label)
-            return <DropdownMenuLabel>{item.title}</DropdownMenuLabel>
-
-
-          if (item.separator)
-            return <DropdownMenuSeparator />
-
-          if (item.triggerTitle)
-            return (
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger>
-                  {item.triggerIcon}
-                  <span> {item.triggerTitle} </span>
-                </DropdownMenuSubTrigger>
-
-                <DropdownMenuPortal>
-                  <DropdownMenuSubContent>
-
-                    {item.subItems?.map(data => (
-                      <DropdownMenuItem>
-                        {data.icon}
-                        <span> {data.title} </span>
-                        {data?.shortcut && (
-                          <DropdownMenuShortcut> {item.shortcut} </DropdownMenuShortcut>
-                        )}
-                      </DropdownMenuItem>
-
-                    ))}
-
-                  </DropdownMenuSubContent>
-                </DropdownMenuPortal>
-              </DropdownMenuSub>
-            )
-
-          return (
-            <DropdownMenuItem>
-              {item.icon}
-              <span> {item.title} </span>
-              {item?.shortcut && (
-                <DropdownMenuShortcut> {item.shortcut} </DropdownMenuShortcut>
-              )}
-            </DropdownMenuItem>
-          )
-        })}
-
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <DropDownMenu dropdownItems={UserNavData}>
+      <UserAvatar className="h-10 w-10"
+        user={{
+          name: user.name || null,
+          image: user.image || null
+        }} />
+    </DropDownMenu>
   )
 }

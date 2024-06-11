@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={cn("bg-white text-slate-900 antialiased light" , inter.className)}>
-      <body className="min-h-screen  bg-slate-50 antialiased">
+      <body className="min-h-screen bg-slate-50 antialiased">
         <Providers>
           <Navbar/>
           <div className="container max-w-7xl mx-auto h-full pt-24">

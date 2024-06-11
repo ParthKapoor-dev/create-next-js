@@ -3,10 +3,10 @@
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { useTransition } from "react";
-import { signIn } from "next-auth/react";
 import { Icons } from "../Icons";
 import { useToast } from "../ui/use-toast";
 import { Loader2 } from "lucide-react";
+import { GoogleSignIn } from "@/app/(actions)/authActions";
 
 interface UserAuthInterface extends React.HTMLAttributes<HTMLDivElement> { }
 
@@ -18,8 +18,9 @@ export default function UserAuthForm({ className }: UserAuthInterface) {
   async function handleGoogleLogin() {
     startTransition(async () => {
       try {
-        await signIn("google");
+        await GoogleSignIn();
       } catch (error) {
+        console.log(error);
         toast({
           title: "Google Authentication Error",
           description: "Please try again or contact the web developer i.e. parthkapoor.coder@gmail.com",
