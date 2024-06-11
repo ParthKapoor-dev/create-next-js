@@ -4,6 +4,7 @@ import { User } from "next-auth"
 import UserAvatar from "../../ui/UserAvatar"
 import { CreditCard, LogOut, Mail, MessageSquare, Settings, User as UserIcon, UserPlus, Users } from "lucide-react";
 import { DropDownMenu, callLabel, dropButton, item, separator, subMenu } from "@/components/ui/DropDownComponent";
+import { logout } from "@/app/(actions)/authActions";
 
 
 interface UserNavProps {
@@ -35,9 +36,7 @@ export default function UserNav({ user }: UserNavProps) {
     ]),
 
     separator(),
-    dropButton("Log out", <LogOut className={iconClassName} />, "⇧⌘Q", () => {
-      console.log("hello world")
-    }),
+    dropButton("Log out", <LogOut className={iconClassName} />, "⇧⌘Q", logout),
   ]
 
 

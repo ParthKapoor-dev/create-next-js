@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "@/Providers";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
+import { ReactNode } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,14 +15,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+  authModal
+}: {
+  children: ReactNode,
+  authModal: ReactNode
+}) {
   return (
-    <html lang="en" className={cn("bg-white text-slate-900 antialiased light" , inter.className)}>
+    <html lang="en" className={cn("bg-white text-slate-900 antialiased light", inter.className)}>
       <body className="min-h-screen bg-slate-50 antialiased">
         <Providers>
-          <Navbar/>
+          <Navbar />
+          {authModal}
           <div className="container max-w-7xl mx-auto h-full pt-24">
             {children}
           </div>
