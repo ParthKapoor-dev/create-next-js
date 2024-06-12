@@ -1,4 +1,4 @@
-# 🚀 Next.js Starter Pack
+# 💫 Create Next JS
 
 Welcome to the Next.js Starter Pack! This package is designed to help you quickly set up a Next.js project with essential features such as authentication, UI components, theme management, and more.
 
