@@ -92,18 +92,18 @@ export function DropDownMenu({ children, dropdownItems }: { children: ReactNode,
 
       <DropdownMenuContent className="w-56">
 
-        {dropdownItems.map(item => {
+        {dropdownItems.map((item, index) => {
 
           if (item?.label)
-            return <DropdownMenuLabel>{item.title}</DropdownMenuLabel>
+            return <DropdownMenuLabel key={index}>{item.title}</DropdownMenuLabel>
 
 
           if (item.separator)
-            return <DropdownMenuSeparator />
+            return <DropdownMenuSeparator key={index} />
 
           if (item.isButton)
             return (
-              <DropdownMenuItem onClick={item.handleClick}>
+              <DropdownMenuItem key={index} onClick={item.handleClick}>
                 {item.icon}
                 <span> {item.title} </span>
                 {item?.shortcut && (
@@ -114,7 +114,7 @@ export function DropDownMenu({ children, dropdownItems }: { children: ReactNode,
 
           if (item.triggerTitle)
             return (
-              <DropdownMenuSub>
+              <DropdownMenuSub key={index}>
                 <DropdownMenuSubTrigger>
                   {item.triggerIcon}
                   <span> {item.triggerTitle} </span>
@@ -123,8 +123,8 @@ export function DropDownMenu({ children, dropdownItems }: { children: ReactNode,
                 <DropdownMenuPortal>
                   <DropdownMenuSubContent>
 
-                    {item.subItems?.map(data => (
-                      <Link href={data.link || "/"}>
+                    {item.subItems?.map((data , index)=> (
+                      <Link href={data.link || "/"} key={index}>
                         <DropdownMenuItem>
                           {data.icon}
                           <span> {data.title} </span>
@@ -142,7 +142,7 @@ export function DropDownMenu({ children, dropdownItems }: { children: ReactNode,
             )
 
           return (
-            <Link href={item.link || "/"}>
+            <Link href={item.link || "/"} key={index}>
               <DropdownMenuItem>
                 {item.icon}
                 <span> {item.title} </span>
