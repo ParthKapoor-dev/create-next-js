@@ -32,7 +32,7 @@ export default function UserAuthForm({ className }: UserAuthInterface) {
 
   return (
     <div className={cn("flex justify-center", className)}>
-      <Button onClick={handleGoogleLogin} disabled={isPending} className="" >
+      <Button onClick={handleGoogleLogin} disabled={isPending} className="w-full" >
         {isPending ? (
           <Loader2 className="animate-spin mr-2 h-6 w-6"/>
         ) : (

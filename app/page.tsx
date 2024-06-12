@@ -1,9 +1,10 @@
+import ParticlesHeroSection from "@/components/Home/HeroSection";
 
 export default function App() {
   
   return (
     <div>
-      Hello World
+      <ParticlesHeroSection title="Create Next JS" />
     </div>
   )
 }

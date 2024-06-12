@@ -24,9 +24,15 @@ export default async function Navbar() {
         {session?.user ? (
           <UserNav user={session.user} />
         ) : (
-          <Link href={"/login"} className={cn(buttonVariants())}>
-            Login
-          </Link>
+          <div className="flex justify-center items-center gap-6">
+            <Link href={"/login"} className={cn(buttonVariants())}>
+              Login 
+            </Link>
+
+            <Link href={"/signup"} className={cn(buttonVariants({variant : "outline"}))}>
+              Signup
+            </Link>
+          </div>
         )}
 
       </div>

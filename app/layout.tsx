@@ -25,8 +25,9 @@ export default function RootLayout({
       <body className="min-h-screen bg-slate-50 antialiased">
         <Providers>
           <Navbar />
-          {authModal}
           <div className="container max-w-7xl mx-auto h-full pt-24">
+            {authModal}
+
             {children}
           </div>
         </Providers>

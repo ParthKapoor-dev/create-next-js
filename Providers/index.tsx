@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export default function Providers({children} : Readonly<{children : ReactNode}>) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system">
+    <ThemeProvider attribute="class" defaultTheme="light">
       {children}
       <Toaster/>
     </ThemeProvider>

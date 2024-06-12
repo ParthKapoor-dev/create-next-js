@@ -1,7 +1,7 @@
 import CloseModal from "@/components/auth/closeModal";
-import LoginComponent from "@/components/auth/login";
+import SignupComponent from "@/components/auth/signup";
 
-export default function InterceptingLoginPage() {
+export default function InterceptingSignupPage() {
   return (
     <div className="fixed inset-0 bg-zinc-900/20 z-20">
       <div className="container flex items-center h-full max-w-lg mx-auto">
@@ -11,10 +11,10 @@ export default function InterceptingLoginPage() {
             <CloseModal />
           </div>
 
-          <LoginComponent/>
+          <SignupComponent />
         </div>
       </div>
-      
+
     </div>
   )
 }
