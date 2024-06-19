@@ -29,7 +29,6 @@ const devLinks = {
   twitter: "https://x.com/Parthkapoor_TE",
   portfolio: "https://linktr.ee/parthkapoordev",
   email : "mailto:parthkapoor.coder@gmail.com"
-
 }
 
 const items = [

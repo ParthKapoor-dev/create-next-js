@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/navbar";
 import { ReactNode } from "react";
 
+import { Analytics } from "@vercel/analytics/react"
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -30,6 +32,7 @@ export default function RootLayout({
 
             {children}
           </div>
+          <Analytics />
         </Providers>
       </body>
     </html>
